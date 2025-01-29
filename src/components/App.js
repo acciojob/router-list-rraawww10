@@ -1,11 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import './../styles/App.css';
 
 const items = [
-  { id: 1, name: "Item One", description: "This is the first item." },
-  { id: 2, name: "Item Two", description: "This is the second item." },
-  { id: 3, name: "Item Three", description: "This is the third item." }
+  { id: "1", name: "Item One", description: "This is the first item." },
+  { id: "2", name: "Item Two", description: "This is the second item." },
+  { id: "3", name: "Item Three", description: "This is the third item." }
 ];
 
 const ItemList = () => {
@@ -23,8 +24,10 @@ const ItemList = () => {
   );
 };
 
-const ItemDetail = ({ id }) => {
-  const item = items.find((item) => item.id === Number(id));
+const ItemDetail = () => {
+  const { id } = useParams();
+  const item = items.find((item) => item.id === id);
+
   if (!item) return <h2>Item not found</h2>;
 
   return (
@@ -42,10 +45,7 @@ const App = () => {
       <div>
         <Routes>
           <Route path="/" element={<ItemList />} />
-          <Route
-            path="/item/:id"
-            element={<ItemDetail />}
-          />
+          <Route path="/item/:id" element={<ItemDetail />} />
         </Routes>
       </div>
     </Router>
