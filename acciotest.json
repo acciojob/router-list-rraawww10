@@ -1,0 +1,4 @@
+{
+    "testRepo": "router-list-solution",
+    "pathToFile": "cypress/integration/tests/test.spec.js"
+}
