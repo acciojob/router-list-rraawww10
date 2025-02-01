@@ -26,7 +26,8 @@ const ItemList = () => {
 
 const ItemDetail = () => {
   const { id } = useParams();
-  const item = items.find((item) => item.id === id);
+  const itemId = Number(id); // Convert id to a number
+  const item = items.find((item) => item.id === itemId); // Use the converted id to find the item
 
   if (!item) return <h2>Item not found</h2>;
 
